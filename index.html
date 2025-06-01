@@ -40,25 +40,36 @@
   <h1>🎉 Wszystkiego najlepszego z okazji Dnia Dziecka! 🎈</h1>
   <p>Kochane Dzieci!<br>Niech każdy dzień przynosi Wam radość, uśmiech i spełnienie marzeń!<br><br>💖 Życzy Marta 💖</p>
   
-  <!-- Zegar -->
-  <div id="clock">🕒 Ładowanie zegara...</div>
+  <!-- Zegar z datą -->
+  <div id="clock">🕒 Ładowanie daty i czasu...</div>
 
   <!-- Obrazek lokalny -->
-  <img src="obrazek2.jpg" alt="Baloniki z okazji Dnia Dziecka">
+  <img src="obrazek.jpg" alt="Baloniki z okazji Dnia Dziecka">
 
   <script>
     function updateClock() {
       const now = new Date();
+
+      const days = ['niedziela', 'poniedziałek', 'wtorek', 'środa', 'czwartek', 'piątek', 'sobota'];
+      const months = ['stycznia', 'lutego', 'marca', 'kwietnia', 'maja', 'czerwca', 'lipca', 'sierpnia', 'września', 'października', 'listopada', 'grudnia'];
+
+      const day = days[now.getDay()];
+      const date = now.getDate();
+      const month = months[now.getMonth()];
+      const year = now.getFullYear();
+
       const hours = String(now.getHours()).padStart(2, '0');
       const minutes = String(now.getMinutes()).padStart(2, '0');
       const seconds = String(now.getSeconds()).padStart(2, '0');
+
+      const dateString = `${day}, ${date} ${month} ${year}`;
       const timeString = `${hours}:${minutes}:${seconds}`;
-      document.getElementById('clock').textContent = `🕒 Aktualny czas: ${timeString}`;
+
+      document.getElementById('clock').textContent = `📅 ${dateString} 🕒 ${timeString}`;
     }
 
-    // Aktualizuj zegar co sekundę
     setInterval(updateClock, 1000);
-    updateClock(); // Wywołaj od razu przy ładowaniu
+    updateClock();
   </script>
 </body>
 </html>
