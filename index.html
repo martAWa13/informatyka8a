@@ -28,13 +28,37 @@
       border-radius: 20px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
+
+    #clock {
+      font-size: 2em;
+      margin-top: 20px;
+      color: #6a1b9a;
+    }
   </style>
 </head>
 <body>
   <h1>🎉 Wszystkiego najlepszego z okazji Dnia Dziecka! 🎈</h1>
   <p>Kochane Dzieci!<br>Niech każdy dzień przynosi Wam radość, uśmiech i spełnienie marzeń!<br><br>💖 Życzy Marta 💖</p>
   
-  <!-- Obrazek z życzeniami (można podmienić link) -->
-  <img src="obrazek.jpg" alt="Baloniki z okazji Dnia Dziecka">
+  <!-- Zegar -->
+  <div id="clock">🕒 Ładowanie zegara...</div>
+
+  <!-- Obrazek lokalny -->
+  <img src="obrazek2.jpg" alt="Baloniki z okazji Dnia Dziecka">
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      const timeString = `${hours}:${minutes}:${seconds}`;
+      document.getElementById('clock').textContent = `🕒 Aktualny czas: ${timeString}`;
+    }
+
+    // Aktualizuj zegar co sekundę
+    setInterval(updateClock, 1000);
+    updateClock(); // Wywołaj od razu przy ładowaniu
+  </script>
 </body>
 </html>
